@@ -5,22 +5,26 @@ const app = express();
 const basicAuth = require("basic-auth");
 
 const cors = require('cors')
-require('dotenv').config()
 const helmet = require("helmet");
 
-const DOMAIN = process.env.DOMAIN || `none`;
-const LDAP_PORT = process.env.LDAP_PORT || 389;
+require('dotenv').config({
+    path: `${__dirname}/.env`
+})
 
-console.log(DOMAIN);
-console.log(LDAP_PORT);
+const DOMAIN = process.env.DOMAIN || `localhost`;
+const LDAP_PORT = process.env.LDAP_PORT || 389;
+const ADMINUSER = process.env.ADMINUSER;
+const PASSWORD = process.env.PASSWORD;
+
+
 
 var getLDAPConfiguration = function (req, callback) {
     process.nextTick(function () {
         const OPTS = {
             server: {
                 url: `ldap://${DOMAIN}:${LDAP_PORT}`,
-                bindDN: "cn=admin,dc=example,dc=com",
-                bindCredentials: "admin_pass",
+                bindDN: `cn=${ADMINUSER},dc=example,dc=com`,
+                bindCredentials: `${PASSWORD}`,
                 searchBase: "dc=example,dc=com",
                 searchFilter: "(uid={{username}})",
                 credentialsLookup: basicAuth,
@@ -30,7 +34,9 @@ var getLDAPConfiguration = function (req, callback) {
     });
 };
 
-// passport.use(new LdapStrategy(OPTS));
+app.use(helmet());
+app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
