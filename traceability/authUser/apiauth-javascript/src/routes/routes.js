@@ -75,39 +75,4 @@ router.get("/api/auth/me", veriffyToken, (req, res, next) => {
   });
 });
 
-router.post('/api/auth/searcuser', veriffyToken, async (req, res) => {
-  let user = req.body.username;
-  const refreshToken = req.token;
-
-  console.log('hello')
-
-  jwt.verify(refreshToken, "secrekey", (err, data) => {
-    clinet.exists(refreshToken, async (err, reply) => {
-
-      if (refreshToken == null) return res.status(401).send({ status: 401, data: "No token" });
-      if (reply === 1) {
-        try {
-          let authenticated = await authenticate({
-            ldapOpts: { url: 'ldap://larmdev.ga:389' },
-            userDn: 'cn=admin,dc=example,dc=com',
-            userPassword: 'admin_pass',
-            userSearchBase: 'ou=users,dc=example,dc=com',
-            usernameAttribute: 'uid',
-            username: user,
-          })
-          return res.send({ data: authenticated, status: true })
-        } catch (e) {
-          return res.send({ data: null, status: false })
-        }
-
-      } else {
-        return res.status(500).send({ status: 500, data: "No token" });
-      }
-    })
-  });
-
-
-
-})
-
 module.exports = router;

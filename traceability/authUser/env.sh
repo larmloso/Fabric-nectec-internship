@@ -13,6 +13,11 @@ ADMINUSER=$4
 ## PASSWORD LDAP SERVER
 PASSWORD=$5
 
+
+DC1=$(echo ${DOMAIN} | cut -d "." -f1)
+DC2=$(echo ${DOMAIN} | cut -d "." -f2)
+
+
 ## generate .env file
 echo 'DOMAIN='${DOMAIN}'
 LDAP_PORT='${LDAP_PORT}'
@@ -25,24 +30,11 @@ echo 'DOMAIN='${DOMAIN}'
 LDAP_PORT='${LDAP_PORT}'
 ADMINUSER='${ADMINUSER}'
 PASSWORD='${PASSWORD}'
+DC1='${DC1}'
+DC2='${DC2}'
 PORT='${PORT}'' >"authUser/.env"
 
 
-## run docker container 
-function runContainer() {
-
-    ## docker compose up container
-    echo "Docker pull redis"
-    docker pull redis
-
-    echo "run docker redis"
-    docker run -d --name redis -p 6379:6379 redis
-
-    # docker-compose -f ./authUser/docker-compose.yaml up -d
-
-}
-
-runContainer
-
+## RUN DOCKER CONTAINER
 cd authUser
-docker-compose up -d
+docker-compose up --build -d

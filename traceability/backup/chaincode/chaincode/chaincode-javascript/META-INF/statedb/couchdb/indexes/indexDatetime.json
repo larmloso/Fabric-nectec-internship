@@ -1,8 +1,0 @@
-{
-    "index":{
-        "fields": ["datetime"]
-    },
-    "ddoc":"indexDatetimeDoc",
-    "name":"indexDatetime",
-    "type":"json"
-}
