@@ -12,11 +12,11 @@ def tls():
         y['csr']['hosts'].append(sys.argv[4])
         del y['signing']['profiles']['ca']
         
-        y['ldap']['enabled'] = True
-        y['ldap']['url'] = "ldap://cn=admin,dc=larmdev,dc=ml:pass@larmdev.ml:389/ou=users,dc=larmdev,dc=ml"
-        y['ldap']['userfilter'] = '(uid=%s)'
-        y['ldap']['attribute']['converters'][0]['name'] = 'hf.Revoker'
-        y['ldap']['attribute']['converters'][0]['value'] = 'attr("uid") =~ "revoker*"'
+        # y['ldap']['enabled'] = True
+        # y['ldap']['url'] = "ldap://cn=admin,dc=larmdev,dc=ml:pass@larmdev.ml:389/ou=users,dc=larmdev,dc=ml"
+        # y['ldap']['userfilter'] = '(uid=%s)'
+        # y['ldap']['attribute']['converters'][0]['name'] = 'hf.Revoker'
+        # y['ldap']['attribute']['converters'][0]['value'] = 'attr("uid") =~ "revoker*"'
 
     with open(path, "w") as f:
         yaml.dump(y, f)
@@ -33,11 +33,11 @@ def org():
         y['csr']['hosts'].append(sys.argv[4])
         y['operations']['listenAddress'] = '127.0.0.1:9445'
         
-        y['ldap']['enabled'] = True
-        y['ldap']['url'] = "ldap://cn=admin,dc=larmdev,dc=ml:pass@larmdev.ml:389/ou=users,dc=larmdev,dc=ml"
-        y['ldap']['userfilter'] = '(uid=%s)'
-        y['ldap']['attribute']['converters'][0]['name'] = 'hf.Revoker'
-        y['ldap']['attribute']['converters'][0]['value'] = 'attr("uid") =~ "revoker*"'
+        # y['ldap']['enabled'] = True
+        # y['ldap']['url'] = "ldap://cn=admin,dc=larmdev,dc=ml:pass@larmdev.ml:389/ou=users,dc=larmdev,dc=ml"
+        # y['ldap']['userfilter'] = '(uid=%s)'
+        # y['ldap']['attribute']['converters'][0]['name'] = 'hf.Revoker'
+        # y['ldap']['attribute']['converters'][0]['value'] = 'attr("uid") =~ "revoker*"'
           
     with open(path2, "w") as f:
         yaml.dump(y, f)

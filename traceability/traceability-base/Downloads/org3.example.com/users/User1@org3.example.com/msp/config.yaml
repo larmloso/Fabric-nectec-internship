@@ -1,0 +1,14 @@
+NodeOUs:
+    Enable: true
+    ClientOUIdentifier:
+        Certificate: cacerts/larmdev-cf-7054-fabric-ca-tls.pem
+        OrganizationalUnitIdentifier: client
+    PeerOUIdentifier:
+        Certificate: cacerts/larmdev-cf-7054-fabric-ca-tls.pem
+        OrganizationalUnitIdentifier: peer
+    AdminOUIdentifier:
+        Certificate: cacerts/larmdev-cf-7054-fabric-ca-tls.pem
+        OrganizationalUnitIdentifier: admin
+    OrdererOUIdentifier:
+        Certificate: cacerts/larmdev-cf-7054-fabric-ca-tls.pem
+        OrganizationalUnitIdentifier: orderer

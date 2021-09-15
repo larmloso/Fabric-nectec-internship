@@ -1,0 +1,1 @@
+./network.sh createLDAP -i larmdev.tech --port 4000 --admin admin --adminpw pass

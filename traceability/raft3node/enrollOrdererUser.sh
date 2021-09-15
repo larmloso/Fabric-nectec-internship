@@ -36,19 +36,19 @@ function enrollCAadmin() {
         --caname ${orgname}-tls --tls.certfiles "${PWD}/${volume}/${orgname}/${DIR_TLS_CERT_PEEM}"
 
     echo 'NodeOUs:
-        Enable: true
-        ClientOUIdentifier:
-            Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
-            OrganizationalUnitIdentifier: client
-        PeerOUIdentifier:
-            Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
-            OrganizationalUnitIdentifier: peer
-        AdminOUIdentifier:
-            Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
-            OrganizationalUnitIdentifier: admin
-        OrdererOUIdentifier:
-            Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
-            OrganizationalUnitIdentifier: orderer' >"${PWD}/${volume}/${ORDERERORG}/msp/config.yaml"
+    Enable: true
+    ClientOUIdentifier:
+        Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
+        OrganizationalUnitIdentifier: client
+    PeerOUIdentifier:
+        Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
+        OrganizationalUnitIdentifier: peer
+    AdminOUIdentifier:
+        Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
+        OrganizationalUnitIdentifier: admin
+    OrdererOUIdentifier:
+        Certificate: cacerts/'${array[0]}'-'${array[1]}'-'${admport}'-'${orgname}'-tls.pem
+        OrganizationalUnitIdentifier: orderer' >"${PWD}/${volume}/${ORDERERORG}/msp/config.yaml"
 }
 
 function enrollIdentities() {

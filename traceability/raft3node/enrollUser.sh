@@ -118,7 +118,6 @@ function enrollOrgAdmin() {
         "${PWD}/${volume}/${PEERORG}/users/Admin@org1.example.com/msp/config.yaml"
 }
 
-
 checkDir
 
 key="$1"
